@@ -1,0 +1,292 @@
+{
+    "slides": {
+        "intro": {
+            "title": "Bash pro základní<br>\"Datovou analýzu\""
+        },
+        "intro_2": {
+            "data_resources": "Naklonujte si následující repozitář"
+        },
+        "intro_3": {
+            "prep": "Příprava",
+            "copy_files": "\t\t\t\t\t\t\tprosím zkopírujte si soubory ze složky <br> EXAMPLE_FILES to /TMP\t\t\t\t\t\t",
+            "spawn_terminal": "\t\t\t\t\t\t\totevřete si terminál a zkoušejte si příkazy <br>jak je budeme procházet \t\t\t\t\t\t"
+        },
+        "bash_overview": {
+            "shells": "Všechny shelly jsou si rovny, ale některé jsou si rovnější"
+        },
+        "bash_overview_1": {
+            "shell_1": "Proč vlastně Bash?",
+            "shell_2": "všudypřítomný ve světě serverů, big data",
+            "shell_3": "rychlý",
+            "shell_4": "univerzální"
+        },
+        "quick_ref": {
+            "usefull_command": "\t\t\t\t\tUžitečné příkazy\t\t\t\t"
+        },
+        "variables": {
+            "variables": "proměnné",
+            "var_intro": "v shellu můžeme použít proměnné",
+            "echo": "použijte <i>echo</i> pro zobrazení"
+        },
+        "aliases": {
+            "aliases": "aliasy",
+            "aliases_2": "aliasy jsou podobné jako proměnné, odkazují na jiné programy funkce, abychom nemuseli tolik psát"
+        },
+        "functions": {
+            "functions_1": "funkce",
+            "functions_2": "občas se hodí",
+            "functions_3": "tento postup je pro základní bash, ostatní mohou fungovat trochu jinak"
+        },
+        "which": {
+            "which_1": "abychom se zorientovali",
+            "which_2": "vrací informace (celé cesty) pro (shell) příkazy, aliasy"
+        },
+        "man": {
+            "man": "pro ty případy, kdy nám parametr --help zkrátka nestačí"
+        },
+        "io": {
+            "io_1": "přesměrování",
+            "io_2": "pro uložení do souboru",
+            "io_3": "standartní identifikátory a užitečné triky s nimi",
+            "io_examples": "<span class=\"hljs-meta\">1&gt; </span>stdout\n<span class=\"hljs-meta\">2&gt; </span>stderr\n&amp;&gt; all of them\n<span class=\"hljs-number\">2</span>&gt;&amp;<span class=\"hljs-number\">1</span> přesměruj stderr do stdout\n&gt; /dev/null - zahoď\npříkaz &lt;/tmp/<span class=\"hljs-number\">28.5</span>.<span class=\"hljs-number\">2020</span>.json"
+        },
+        "magic": {
+            "magic_1": "skoro Perl magie",
+            "magic_2": "vyhodnotit výraz",
+            "magic_3": "poslední výsledek",
+            "magic_4": "znova vyhodnotit poslední výraz"
+        },
+        "magic_contd": {
+            "magic_contd_1": "EOL magie",
+            "magic_contd_2": "vetší vstupy<br>\t\t\t\t\t\t\tnapř. může se hodit, když budete chtít vložit malý kus python kódu"
+        },
+        "glob": {
+            "glob_2": "nahrazení žolíkového znaku",
+            "glob_3": "* - nahradí jakýkoliv string",
+            "glob_4": "? - nahradí jeden znak",
+            "glob_5": "[ab] - třídy znaků",
+            "glob_6": "[0-9] - rozsahy",
+            "glob_7": "[!0-9] - doplňky"
+        },
+        "keyboard_commands": {
+            "keyboard_commands_1": "Klávesové zkratky",
+            "keyboard_commands_2": "ALT + . - poslední parametr na předchozího příkazu",
+            "keyboard_commands_3": "CTRL + K - smaž až do konce řádky",
+            "keyboard_commands_4": "CTRL + W - smaž slovo pod kurzorem",
+            "keyboard_commands_5": "TAB - snaží se doplnit"
+        },
+        "cat_1": {
+            "cat_1": "vytiskne soubor na stardartní výstup",
+            "cat_2": "zhruba ekvivalentní",
+            "cat_3": "pozor zrada"
+        },
+        "tee": {
+            "tee_1": "užitečné pokud potřebujeme zachovat mezivýsledky"
+        },
+        "hexdump": {
+            "hexdump": "pro kontrolu binárních dat, netisknutelných znaků"
+        },
+        "more_less": {
+            "more_less_1": "pro prohlížení souborů, které se nevejdou na jednu obrazovku",
+            "more_less_2": "zcela intuitivně MORE je jednoduchý, LESS toho nabízí víc"
+        },
+        "head_1": {
+            "head_tail_1": "vezme začátek nebo konec soubrou a vytiskne",
+            "head_tail_2": "jako výchozí volba je 10 řádek"
+        },
+        "head_2": {
+            "head_tail_2": "pokud chcete jiný počet řádek",
+            "head_tail_3": "pokud jsou řádky příliš dlouhé, vezmi znaky/byty"
+        },
+        "head_3": {
+            "head_tail_4": "tail funguje obdobně",
+            "head_tail_5": "zajímaost! vezmi nějaké řádky až odněkud<br> například přeskoč hlavičku",
+            "head_tail_6": "nebo se podívej na problematickou část souboru"
+        },
+        "ls_1": {
+            "ls_1": "vylistuje adresář",
+            "ls_1_1": "<span class=\"hljs-title\">ls</span> .(<span class=\"hljs-keyword\">výchozí</span> volba)",
+            "ls_2": "zrada",
+            "ls_2_1": "ls <span class=\"hljs-regexp\">/tmp/</span>* -- celé cesty <span class=\"hljs-regexp\">/tmp/</span> -- relativní cesty"
+        },
+        "ls_2": {
+            "ls_3": "s veškerými informacemi",
+            "ls_4": "se skrytými soubory"
+        },
+        "ls_3": {
+            "ls_5": "užitečné parametry",
+            "ls_6": "neřaď, hodí se pro složky s hodně soubory",
+            "ls_7": "každý soubor na řádku bez dalších informací",
+            "ls_8": "seřaď podle data vytvoření"
+        },
+        "mkdir": {
+            "mkdir_2": "užitečné parametry {} - kartézský produkt"
+        },
+        "cp_mv": {
+            "cp_mv_1": "cp a mv",
+            "cp_mv_2": "chytrá interpretace"
+        },
+        "file_1": {
+            "file_1": "ukáže informace o soubrou (v Linuxu je všechno soubor), výsledky se mohou lišit pro různé verze, pro různé implementace: Linux vs. BDS vs. MacOS"
+        },
+        "file_2": {
+            "wc_1": "vypíše základí počty ohledně souboru",
+            "wc_2": "počet řádek, počet znaků, ..."
+        },
+        "find_1": {
+            "find_1": "podpora globbing",
+            "find_2": "dlouhé parametry pouze s jednou pomlčkou",
+            "find_3": "nevadí mu pracovat s adresáři, kde je hodně souborů"
+        },
+        "find_2": {
+            "find_4": "užitečné parametry",
+            "find_5": "jen soubory/adresáře",
+            "find_6": "jen soubory s nenulovou velikostí",
+            "find_7": "omezit hloubku prohledávání"
+        },
+        "cut": {
+            "cut_1": "vybere jen jeden 'sloupec'",
+            "cut_2": "můžeme vybrat rozsah sloupců",
+            "cut_3": "změna oddělovače"
+        },
+        "seq": {
+            "seq_1": "generuje řady",
+            "seq_2": "prostřední parametr definuje krok"
+        },
+        "printf": {
+            "printf_1": "formátovaně tiskne data<br>(podobná syntax jako C/C++/Python)"
+        },
+        "history_1": {
+            "history_1": "bash si pamatuje historii příkazů",
+            "history_2": "\t\t\t\t\t\t\thledat se dá pomocí ^, v nebo hledat výraz pomocí CTRL + R/ CTRL + S \t\t\t\t\t\t"
+        },
+        "history_2": {
+            "history_2_1": "Bash bez historie"
+        },
+        "tr_grep_sed_1": {
+            "tr_1": "úpravy na úrovni znaku",
+            "tr_2": "smazat",
+            "tr_3": "globbing vzory",
+            "tr_4": "čištění"
+        },
+        "tr_grep_sed_2": {
+            "grep_1": "vybere řádky, které nás zajímají",
+            "grep_2": "podpora regulárních výrazů"
+        },
+        "tr_grep_sed_3": {
+            "grep_4": "s čísly řádků",
+            "grep_5": "invertovaný výběr",
+            "grep_6": "vytiskne jenom matchující část"
+        },
+        "tr_grep_sed_4": {
+            "sed_1": "ještě více bohatší nástroj pro editování proudů (stream editing tool)",
+            "sed_2": "úpravy v původním dokumentu, nebezpečné"
+        },
+        "tr_grep_sed_5": {
+            "sed_3": "ošklivé regexy = skutečná síla",
+            "sed_4": "složitější příklad, většinou je potřeba několik pokusů ;-)"
+        },
+        "tr_grep_sed_6": {
+            "sed_5": "vyhledávání přes konec řádku",
+            "sed_6": "řetězení příkladů"
+        },
+        "sort_1": {
+            "sort_1": "seřazení vstupů",
+            "sort_2": "\t\t\t\t\t\t\tpodpora paralelního zpracování v novějších verzích\t\t\t\t\t\t",
+            "sort_3": "\t\t\t\t\t\t\tpokud pracujete s velkými soubory, nastavení velké paměti může urychlit výpočet"
+        },
+        "sort_2": {
+            "sort_4": "užitečné parametry"
+        },
+        "sort_3": {
+            "sort_5": "parametry vs jiné příkazy",
+            "sort_6": "unikatní záznamy",
+            "sort_7": "náhodné skupiny"
+        },
+        "awk_1": {
+            "awk_1": "nejzákladnější použití, výběr sloupce, oddělovač bílé znaky",
+            "awk_2": "užitečné speciální proměnné"
+        },
+        "awk_2": {
+            "awk_3": "vlastní oddělovač",
+            "awk_4": "podmínky"
+        },
+        "awk_3": {
+            "awk_5": "proměnné prostředí",
+            "awk_6": "nahrazování"
+        },
+        "awk_4": {
+            "awk_7": "operace (s poli)"
+        },
+        "xargs": {
+            "xargs_1": "spustí program ze vstupu",
+            "xargs_2": "dají se dělat komplikovanější věci",
+            "xargs_3": "zapnout multiprocessing"
+        },
+        "bc": {
+            "bc_1": "kalkulačka v příkazové řádce",
+            "bc_1_1": "bc (<span class=\"hljs-name\">spustí</span> příkazovou řádku)",
+            "bc_2": "můžeme řetězit",
+            "bc_3": "a zapnout podporu pro počítání s plovoucí čárkou"
+        },
+        "paste": {
+            "paste_1": "spojí dohromady řádky souborů na vstupu",
+            "paste_2": "spojí řádky souboru dohromady"
+        },
+        "split": {
+            "split_1": "rozdělí na kusy",
+            "split_2": "rozdělí podle počtu řádku",
+            "split_3": "předpona jména"
+        },
+        "join": {
+            "join_1": "spojí dva seřazené soubory podle klíče",
+            "join_2": "vyvtoří chybějící záznamy ve výstupu",
+            "join_3": "přepíše výchozí oddělovač"
+        },
+        "parallel_1": {
+            "parallel_1": "paralelní zpracování, xargs udělaný dobře",
+            "parallel_1_1": "<span class=\"hljs-attribute\">parallel vas_prikaz</span>",
+            "parallel_2": "zanořování/úrovně"
+        },
+        "parallel_2": {
+            "parallel_3": "několik sloupců na vstupu",
+            "parallel_4": "argumenty na vstupu"
+        },
+        "jq_1": {
+            "jq_1": "nástroj pro zpracování JSONu v příkazové řádce"
+        },
+        "jq_2": {
+            "jq_2": "užitečné parametry",
+            "jq_3": "načte celý soubor",
+            "jq_4": "rozbalí list",
+            "jq_5": "zanořování se do další úrovně"
+        },
+        "jq_3": {
+            "jq_6": "užitečné parametry",
+            "jq_7": "pole",
+            "jq_8": "slovníky",
+            "jq_9": "formatovaný výstup"
+        },
+        "examples_1": {
+            "ex_1": "Příklady",
+            "ex_1_1": "Spočtětě součet všech 'cnt' z našeho příkladu"
+        },
+        "examples_2": {
+            "ex_2": "Hloupý počet"
+        },
+        "examples_3": {},
+        "examples_4": {},
+        "examples_5": {},
+        "examples_6": {
+            "ex_3": "Příklady",
+            "ex_4": "Spočtětě součet všech 'source' z našeho příkladut\t\t\t\t\t\t /tmp/28.5.2020.json"
+        },
+        "examples_7": {
+            "ex_5": "Ne až tak hloupý součet",
+            "ex_6": "Inpirováno <a href=\"https://stackoverflow.com/a/14916890\">tímto</a>"
+        }
+    },
+    "menubar": {
+        "chooselanguage": "Vyberte jazyk"
+    }
+}

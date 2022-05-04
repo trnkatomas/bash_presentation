@@ -1,0 +1,291 @@
+{
+    "slides": {
+        "intro": {
+            "title": "Shell for quick and dirty<br>\"Data Analysis\""
+        },
+        "intro_2": {
+            "data_resources": "Download following repo"
+        },
+        "intro_3": {
+            "prep": "Preparation",
+            "copy_files": "\t\t\t\t\t\t\tplease copy the files from folder<br> EXAMPLE_FILES to /TMP (or any other easily accessible location)\t\t\t\t\t\t",
+            "spawn_terminal": "\t\t\t\t\t\t\topen your terminal and paste all <br>the commands as we will go along \t\t\t\t\t\t"
+        },
+        "bash_overview": {
+            "shells": "All shells are equal, some of them are just better"
+        },
+        "bash_overview_1": {
+            "shell_1": "Why bother with Bash?",
+            "shell_2": "omnipresent in the world of servers, big data",
+            "shell_3": "fast",
+            "shell_4": "universal"
+        },
+        "quick_ref": {
+            "usefull_command": "\t\t\t\t\tUseful commands\t\t\t\t"
+        },
+        "variables": {
+            "variables": "variables",
+            "var_intro": "in shell you can obviously have variables",
+            "echo": "use <i>echo</i> to display"
+        },
+        "aliases": {
+            "aliases": "aliases",
+            "aliases_2": "similar to variables are aliases, for instance to save some typing"
+        },
+        "functions": {
+            "functions_1": "functions",
+            "functions_2": "sometimes a function might come in handy",
+            "functions_3": "this works for bare bash, other shells handle functions differently"
+        },
+        "which": {
+            "which_1": "in order to orient yourself",
+            "which_2": "prints info (full path) for (shell) commands"
+        },
+        "man": {
+            "man": "for when the --help parameter simply does not cut it"
+        },
+        "io": {
+            "io_1": "redirections",
+            "io_2": "in order to save to file",
+            "io_3": "standard identifiers and tricks are as follows",
+            "io_examples": "<span class=\"hljs-meta\">1&gt; </span>stdout<span class=\"hljs-meta\">2&gt; </span>stderr&amp;&gt; all of them<span class=\"hljs-number\">2</span>&gt;&amp;<span class=\"hljs-number\">1</span> redirect stderr to stdout&gt; /dev/null - throw awaycommand &lt;/tmp/<span class=\"hljs-number\">28.5</span>.<span class=\"hljs-number\">2020</span>.json"
+        },
+        "magic": {
+            "magic_1": "Perl-like magic",
+            "magic_2": "eval some code",
+            "magic_3": "last result",
+            "magic_4": "execute last command again"
+        },
+        "magic_contd": {
+            "magic_contd_1": "EOL magic",
+            "magic_contd_2": "bigger inputs<br>\t\t\t\t\t\t\teg. can come in handy while mangling small python code into bash"
+        },
+        "glob": {
+            "glob_2": "wildcard replacement",
+            "glob_3": "* - replace whathwer",
+            "glob_4": "? - replace one char",
+            "glob_5": "[ab] - character classes",
+            "glob_6": "[0-9] - ranges",
+            "glob_7": "[!0-9] - complements"
+        },
+        "keyboard_commands": {
+            "keyboard_commands_1": "Keyboards commands",
+            "keyboard_commands_2": "ALT + . - last parameter from previous command",
+            "keyboard_commands_3": "CTRL + K - delete till the end of line",
+            "keyboard_commands_4": "CTRL + W - delete word under cursor",
+            "keyboard_commands_5": "TAB - try to fill in what it can"
+        },
+        "ls_1": {
+            "ls_1": "list the directory as a parameter",
+            "ls_1_1": "<span class=\"hljs-title\">ls</span> .(<span class=\"hljs-keyword\">default</span> option)",
+            "ls_2": "caveat",
+            "ls_2_1": "ls <span class=\"hljs-regexp\">/tmp/</span>* -- full pathls <span class=\"hljs-regexp\">/tmp/</span> -- relative path"
+        },
+        "ls_2": {
+            "ls_3": "with all the information",
+            "ls_4": "with hidden files"
+        },
+        "ls_3": {
+            "ls_5": "useful flags",
+            "ls_6": "do not sort, useful for folder with lot of entries",
+            "ls_7": "every file on separate line without any other info",
+            "ls_8": "sort by date of creation"
+        },
+        "mkdir": {
+            "mkdir_2": "usefull command {} - cartesian product"
+        },
+        "cp_mv": {
+            "cp_mv_1": "cp and mv",
+            "cp_mv_2": "clever interpretation"
+        },
+        "file_1": {
+            "file_1": "show info about the file (in Linux, everything is a file), results may vary for different versions, for different implementations: Linux vs. BSD (MacOS)"
+        },
+        "file_2": {
+            "wc_1": "show basic counts of the file",
+            "wc_2": "number of lines, number of chars, ..."
+        },
+        "find_1": {
+            "find_1": "supports globbing",
+            "find_2": "long parameters with just one dash",
+            "find_3": "works just fine even with folders with lots of entries"
+        },
+        "find_2": {
+            "find_4": "useful flags",
+            "find_5": "just files/dirs",
+            "find_6": "just non zero sized files",
+            "find_7": "limit the depth"
+        },
+        "cat_1": {
+            "cat_1": "simply output the whole file to stdout",
+            "cat_2": "roughly equivalent to",
+            "cat_3": "caveat"
+        },
+        "tee": {
+            "tee_1": "super useful if you would like to store some intermediate results"
+        },
+        "more_less": {
+            "more_less_1": "for viewing the content that is unable to fit the screen",
+            "more_less_2": "MORE go simply over the file, LESS is more feature rich"
+        },
+        "hexdump": {
+            "hexdump": "in order to verify binary data, or non printable chars"
+        },
+        "head_1": {
+            "head_tail_1": "simply takes the beggining or end of the file",
+            "head_tail_2": "by default takes 10 lines"
+        },
+        "head_2": {
+            "head_tail_2": "if you would like to take different number of lines",
+            "head_tail_3": "if you have way too long lines, take charactes/bytes"
+        },
+        "head_3": {
+            "head_tail_4": "tail works as expected",
+            "head_tail_5": "nice feature! take after some lines<br> for instance to skip header",
+            "head_tail_6": "or take a look at a problematic part of file"
+        },
+        "cut": {
+            "cut_1": "can take 'column'",
+            "cut_2": "can specify range, columns",
+            "cut_3": "change the delimiter"
+        },
+        "history_1": {
+            "history_1": "bash is kind enough to remember the past commands for you",
+            "history_2": "\t\t\t\t\t\t\twith CTRL + R/ CTRL + S you can search backward/forward respectively\t\t\t\t\t\t"
+        },
+        "history_2": {
+            "history_2_1": "No history bash"
+        },
+        "tr_grep_sed_1": {
+            "tr_1": "edit on character level",
+            "tr_2": "delete",
+            "tr_3": "globbing patterns",
+            "tr_4": "cleaning"
+        },
+        "tr_grep_sed_2": {
+            "grep_1": "matching interesting lines",
+            "grep_2": "regexp support"
+        },
+        "tr_grep_sed_3": {
+            "grep_4": "with line numbers",
+            "grep_5": "inverse selection",
+            "grep_6": "output just the matched part"
+        },
+        "tr_grep_sed_4": {
+            "sed_1": "even more powerful stream editing tool",
+            "sed_2": "inplace editing, dangerous zone"
+        },
+        "tr_grep_sed_5": {
+            "sed_3": "hairy regexes = true power",
+            "sed_4": "more complicated example, several attempts were needed"
+        },
+        "tr_grep_sed_6": {
+            "sed_5": "matching cross the endline",
+            "sed_6": "command chaining"
+        },
+        "sort_1": {
+            "sort_1": "sort inputs",
+            "sort_2": "\t\t\t\t\t\t\tsupports parallel execution in newer versions\t\t\t\t\t\t"
+        },
+        "sort_2": {
+            "sort_4": "useful examples"
+        },
+        "sort_3": {
+            "sort_5": "flags vs programs",
+            "sort_6": "uniq entries",
+            "sort_7": "random groups together/all"
+        },
+        "awk_1": {
+            "awk_1": "most basic usage, select columns, whitespace delimited",
+            "awk_2": "useful special variables"
+        },
+        "awk_2": {
+            "awk_3": "specify delimiters",
+            "awk_4": "conditions"
+        },
+        "awk_3": {
+            "awk_5": "env variables",
+            "awk_6": "sub in input"
+        },
+        "awk_4": {
+            "awk_7": "operations (arrays)"
+        },
+        "xargs": {
+            "xargs_1": "build and run command from stdin",
+            "xargs_2": "you can do some more complicated stuff",
+            "xargs_3": "enable multiprocessing"
+        },
+        "paste": {
+            "paste_1": "merge the lines of input files",
+            "paste_2": "merge the lines of file together"
+        },
+        "split": {
+            "split_1": "split into chunks",
+            "split_2": "split by number of lines",
+            "split_3": "named prefix"
+        },
+        "join": {
+            "join_1": "Join two sorted files together",
+            "join_2": "put missing entries into output",
+            "join_3": "override default delimiter"
+        },
+        "parallel_1": {
+            "parallel_1": "parallel processing, xargs done right",
+            "parallel_1_1": "<span class=\"hljs-attribute\">parallel your_command</span>",
+            "parallel_2": "nesting"
+        },
+        "parallel_2": {
+            "parallel_3": "multiple columns on input",
+            "parallel_4": "argument processing"
+        },
+        "jq_1": {
+            "jq_1": "command line processing tool for JSON data"
+        },
+        "jq_2": {
+            "jq_2": "useful params",
+            "jq_3": "load whole file",
+            "jq_4": "unwind array",
+            "jq_5": "piping, next level"
+        },
+        "jq_3": {
+            "jq_6": "useful params",
+            "jq_7": "arrays",
+            "jq_8": "dicts",
+            "jq_9": "format output"
+        },
+        "seq": {
+            "seq_1": "can generate sequencese",
+            "seq_2": "middle param is cool"
+        },
+        "printf": {
+            "printf_1": "print formatted data<br>(similar to C/C++/Python syntax)"
+        },
+        "bc": {
+            "bc_1": "command line calculator",
+            "bc_1_1": "bc (<span class=\"hljs-name\">opens</span> prompt)",
+            "bc_2": "you can pipe",
+            "bc_3": "or enable floating point arithmetics"
+        },
+        "examples_1": {
+            "ex_1": "Examples",
+            "ex_1_1": "Get the sum of all 'cnt' from our file"
+        },
+        "examples_2": {
+            "ex_2": "Stupid count"
+        },
+        "examples_3": {},
+        "examples_4": {},
+        "examples_5": {},
+        "examples_6": {
+            "ex_3": "Examples",
+            "ex_4": "Get the sum of all 'source' for each target rom our file\t\t\t\t\t\t\t /tmp/28.5.2020.json\t\t\t\t\t\t"
+        },
+        "examples_7": {
+            "ex_5": "Not so stupid count",
+            "ex_6": "Inspired by <a href=\"https://stackoverflow.com/a/14916890\">this</a>"
+        }
+    },
+    "menubar": {
+        "chooselanguage": "Choose language"
+    }
+}

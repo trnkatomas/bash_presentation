@@ -1,0 +1,1308 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/custom.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/demo.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+<body>
+	<div class="reveal">
+        <div class="menubar" id="menubar">
+            <div class="dropdown">
+                <input id="checkbox_toggle" type="checkbox">
+                <label for="checkbox_toggle" data-i18n="chooselanguage">Choose language</label>
+                <div class="langchooser">
+                    <label>
+                        <input type="radio" name="menulangradios" value="en" checked><span>English</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="menulangradios" value="cz"><span>Čeština</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+		<div class="slides">			
+			<section data-state="intro"> <!-- header and name and repo -->
+				<section id="intro" data-state="intro">
+					<h1 data-i18n="title">Shell for quick and dirty<br>"Data Analysis"</h1>
+				</section>
+				<section id="intro_2" data-state="intro">
+					<h3 data-i18n="data_resources">Download following repo</h3>
+					<a href="https://github.com/trnkatomas/bash_presentation">
+						https://github.com/trnkatomas/bash_presentation</a>
+				</section>
+				<section id="intro_3" data-state="intro">
+					<h3 data-i18n="prep">Preparation</h3>
+					<ul>
+						<li data-i18n="copy_files">
+							please copy the files from folder<br> EXAMPLE_FILES to /TMP (or any other easily accessible location)
+						</li>
+						<li data-i18n="spawn_terminal"> 
+							open your terminal and paste all <br>the commands as we will go along 
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section id="bash_overview_0"> <!-- bash flavours-->
+                <section id="bash_overview"> <!-- bash flavours-->
+                    <h3>Bash</h3>
+                    <ul>
+                        <li data-i18n="shells">All shells are equal, some of them are just better</li>
+                        <li>Bourne Again SHell</li>
+                        <li><a href="https://fishshell.com/">FiSH</a></li>
+                        <li><a href="https://ohmyz.sh/">ZSH</a></li>
+                        <li><a href="https://mosh.org/">Mosh</a></li>
+                    </ul>
+                </section>
+                <section id="bash_overview_1">
+                    <h3 data-i18n="shell_1">Why bother with Bash?</h3>
+                    <ul>
+                        <li data-i18n="shell_2">omnipresent in the world of servers, big data</li>
+                        <li data-i18n="shell_3">fast</li>
+                        <li data-i18n="shell_4">universal</li>
+                    </ul>
+			    </section>
+            </section>
+			<section id="quick_ref"> <!-- outline -->
+				<h3 data-i18n="usefull_command">
+					Useful commands
+				</h3>
+				<div class="left">
+					<ul>
+						<li><a href="#/basics">basics</a></li>
+						<!-- <() >() tee https://serverfault.com/questions/40284/create-virtual-file-from-bash-command-output/40291#40291 -->
+						<li><a href="#/ls">ls</a></li>
+						<li><a href="#/file">file</a></li>
+						<li><a href="#/find">find</a></li>
+                        <li><a href="#/history">history</a></li>
+                        <li><a href="#/cat">cat (tac :)</a></li>
+						<li><a href="#/head">head/tail</a></li>
+                        <li><a href="#/sort">sort</a></li>
+						<li><a href="#/cut">cut</a></li>						
+                        <li><a href="#/tr-grep-sed">tr & grep & sed</a></li>
+					</ul>
+				</div>
+				<div class="right">
+					<ul>
+						<li><a href="#/awk">awk</a></li>
+						<li><a href="#/paste">paste</a></li>
+						<li><a href="#/split">split</a></li>
+						<li><a href="#/join">join</a></li>
+                        <li><a href="#/xargs">xargs</a></li>
+						<li><a href="#/parallel">parallel</a></li>
+						<li><a href="#/jq">jq</a></li>
+                        <li><a href="#/bc">bc</a></li>
+                        <li><a href="#/printf">printf</a></li>
+                        <li><a href="#/seq">seq</a></li>
+					</ul>
+				</div>
+			</section>
+			<section id="basics"> <!-- basics -->
+				<section id="variables">
+					<h2 data-i18n="variables">variables</h2>
+					<ul>
+						<li><span data-i18n="var_intro">in shell you can obviously have variables</span>
+						<pre>
+							<code data-trim data-noescape>
+								filename=/tmp/28.5.2020.json 
+							</code>
+						</pre>
+						</li>
+						<li><span data-i18n="echo">use <i>echo</i> to display</span>
+							<pre>
+								<code data-trim data-noescape>
+									echo ${filename}
+								</code>
+							</pre>
+						</li>
+				</section>
+				<section id="aliases">
+					<h2 data-i18n="aliases">aliases</h2>
+					<ul>
+						<li data-i18n="aliases_2">similar to variables are aliases, for instance to save some typing</li>
+						<pre>
+							<code data-trim data-noescape>
+								alias ll='ls -l'
+							</code>
+						</pre>
+				</section>
+				<section id="functions">
+					<h2 data-i18n="functions_1">functions</h2>
+					<ul>
+						<li><span data-i18n="functions_2">sometimes a function might come in handy</span>
+							<pre>
+								<code data-trim data-noescape>
+									shift_date() {
+										date --date "-${1} day" +%Y-%m-%d
+									}
+									export -f shift_date
+								</code>
+							</pre>							
+						</li>
+						<li data-i18n="functions_3">this works for bare bash, other shells handle functions differently</li>
+				</section>
+				<section id="which">
+					<h2>which</h2>
+					<ul>
+						<li data-i18n="which_1">in order to orient yourself</li>
+						<li data-i18n="which_2">prints info (full path) for (shell) commands</li>
+						<pre>
+							<code data-trim data-noescape>
+								which head 
+								which ll
+								which shift_date
+								which conda
+								which python
+							</code>
+						</pre>
+				</section>
+				<section id="man">
+					<h2>man</h2>
+					<ul>
+					<li data-i18n="man">for when the --help parameter simply does not cut it</li>
+					<pre>
+						<code data-trim data-noescape>
+						 man sort
+						</code>
+					</pre>
+					</ul>
+				</section>
+				<section id="io">
+					<h2 data-i18n="io_1">redirections</h2>
+					<ul>
+						<li><span data-i18n="io_2">in order to save to file</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json &gt; /tmp/some_other_file.txt
+									cat /tmp/28.5.2020.json &gt;&gt; /tmp/some_other_file.txt
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="io_3">standard identifiers and tricks are as follows</span>
+							<pre>
+								<code data-trim data-noescape data-i18n="io_examples">
+									1&gt; stdout
+									2&gt; stderr
+									&&gt; all of them
+									2&gt;&1 redirect stderr to stdout
+									&gt; /dev/null - throw away
+									command &lt;/tmp/28.5.2020.json
+								</code>
+							</pre>
+						</li>
+				</section>
+				<section id="magic">
+					<h2 data-i18n="magic_1">Perl-like magic</h2>
+					<ul>
+						<li><span data-i18n="magic_2">eval some code</span>
+							<pre>
+								<code data-trim data-noescape>
+									$()
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="magic_3">last result</span>
+							<pre>
+								<code data-trim data-noescape>
+									$?
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="magic_4">execute last command again</span>
+							<pre>
+								<code data-trim data-noescape>
+									$!!
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="magic_contd">
+					<h2 data-i18n="magic_contd_1">EOL magic</h2>
+					<ul>
+						<li><span data-i18n="magic_contd_2">bigger inputs<br>
+							eg. can come in handy while mangling small python code into bash</span>
+							<pre>
+								<code data-trim data-noescape>
+									sed 's|http://||' &lt;&lt;EOL
+									http://url1.com
+									http://url2.com
+									http://url3.com
+									EOL
+								</code>
+							</pre>
+						</li>
+				</section>
+                <section id="glob">
+					<h2>glob</h2>
+					<ul>
+						<li data-i18n="glob_2">wildcard replacement</li>
+                        <li data-i18n="glob_3">* - replace whathwer</li>
+                        <li data-i18n="glob_4">? - replace one char</li>
+                        <li data-i18n="glob_5">[ab] - character classes</li>
+                        <li data-i18n="glob_6">[0-9] - ranges</li>
+                        <li data-i18n="glob_7">[!0-9] - complements</li>
+                    </ul>
+				</section>
+				<section id="keyboard_commands">
+					<h2 data-i18n="keyboard_commands_1">Keyboards commands</h2>
+					<ul>
+						<li data-i18n="keyboard_commands_2">ALT + . - last parameter from previous command</li>
+						<li data-i18n="keyboard_commands_3">CTRL + K - delete till the end of line</li>
+						<li data-i18n="keyboard_commands_4">CTRL + W - delete word under cursor</li>
+                        <li data-i18n="keyboard_commands_5">TAB - try to fill in what it can</li>
+					</ul>
+				</section>
+			</section>
+            <section id="ls"> <!-- ls -->
+				<section id="ls_1">
+					<h2>ls</h2>
+					<ul>
+						<li><span data-i18n="ls_1">list the directory as a parameter</span>
+							<pre>
+								<code data-trim data-noescape data-i18n="ls_1_1">
+									ls .(default option) 
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="ls_2">caveat</span>
+							<pre>
+								<code data-trim data-noescape data-i18n="ls_2_1">
+									ls /tmp/* -- full path
+									ls /tmp/ -- relative path
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="ls_2">
+					<ul>
+						<li><span data-i18n="ls_3">with all the information</span>
+							<pre>
+								<code data-trim data-noescape>
+									ls -l /tmp
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="ls_4">with hidden files</span>
+							<pre>
+								<code data-trim data-noescape>
+									ls -la ~
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="ls_3">
+					<h4 data-i18n="ls_5">useful flags</h4>
+					<ul>
+						<li><span data-i18n="ls_6">do not sort, useful for folder with lot of entries</span>
+							<pre>
+								<code data-trim data-noescape>
+									ls -U ~
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="ls_7">every file on separate line without any other info</span>
+							<pre>
+								<code data-trim data-noescape>
+									ls -1 ~
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="ls_8">sort by date of creation</span>
+							<pre>
+								<code data-trim data-noescape>
+									ls -t | head 
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+			</section>
+            <section>
+                <section id="mkdir">
+                    <h3>mkdir</h3>
+                    <ul>
+                        <li data-i18n="mkdir_2">makes directory</li>
+                        <li><span data-i18n="mkdir_2">usefull command -p</span>
+                            <pre>
+                                <code data-trim data-noescape>
+                                    mkdir -p /tmp/make/the/whole/path
+                                </code>
+                            </pre>
+                        </li>
+                        <li><span data-i18n="mkdir_2">usefull command {} - cartesian product</span>
+                            <pre>
+                                <code data-trim data-noescape>
+                                    mkdir -p /tmp/{a,b}/{c,d}
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </section>
+                <section id="cp_mv">
+                    <h3 data-i18n="cp_mv_1">cp and mv</h3>
+                    <ul>
+                        <li>copy and move files, folders</li>
+                        <li>usefull param <i>-f</i> (force)</li>
+                        <li><span data-i18n="cp_mv_2">clever interpretation</span></li>                  
+                    </ul>
+                    <pre>
+                        <code data-trim data-noescape>
+                            mv /tmp/28.5.2020.json /tmp/category.tsv /tmp/a
+                        </code>
+                    </pre>                
+                </section>
+            </section>
+			<section id="file"> <!-- file -->
+				<section id="file_1">
+					<h2>file</h2>
+					<ul>
+                        <li><span data-i18n="file_1">show info about the file (in Linux, everything is a file), results may vary for different versions, for different implementations: Linux vs. BSD (MacOS)</span>
+					        <pre>
+						        <code data-trim data-noescape>
+                                    file /tmp/28.5.2020.json
+                                    file /dev/null
+                                </code>
+	        				</pre>
+                        </li>
+                    </ul>
+				</section>
+				<section id="file_2">
+					<h2>wc</h2>
+					<ul>
+						<li data-i18n="wc_1">show basic counts of the file</li>
+						<li data-i18n="wc_2">number of lines, number of chars, ...</li>
+					</ul>
+					<pre>
+						<code data-trim data-noescape>
+						wc -l /tmp/28.5.2020.json
+						wc -c /tmp/28.5.2020.json
+						</code>
+					</pre>
+				</section>
+			</section>
+			<section id="find"> <!-- find -->
+				<section id="find_1">
+				<h2>find</h2>
+				<ul>					
+					<li data-i18n="find_1">supports globbing</li>
+					<li data-i18n="find_2">long parameters with just one dash</li>
+					<li data-i18n="find_3">works just fine even with folders with lots of entries</li>
+					<pre>
+						<code data-trim data-noescape>
+							find ./ -name "some_long_name*.txt"
+						</code>
+					</pre>
+					</li>
+				</ul>
+				</section>
+				<section id="find_2">
+					<h4 data-i18n="find_4">useful flags</h4>
+					<ul>
+						<li><span data-i18n="find_5">just files/dirs</span>
+							<pre>
+								<code data-trim data-noescape>
+									find /tmp -name "*.json" -type f/d
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="find_6">just non zero sized files</span>
+							<pre>
+								<code data-trim data-noescape>
+									find /tmp -name "*.json" -size +0k
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="find_7">limit the depth</span>
+							<pre>
+								<code data-trim data-noescape>
+									find /tmp -name "*.json" -maxdepth 1
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>                
+			</section>
+			<section id="cat"> <!-- cat (tac :) -->
+				<section id="cat_1">
+					<h2>cat (tac :) 🐈</h2>
+					<ul>
+						<li><span data-i18n="cat_1">simply output the whole file to stdout</span>
+							<pre>
+										<code data-trim data-noescape>
+											cat /tmp/28.5.2020.json 
+										</code>
+								</pre>
+						</li>
+						<li><span data-i18n="cat_2">roughly equivalent to</span>
+							<pre>
+										<code data-trim data-noescape>
+											&lt;/tmp/28.5.2020.json 
+										</code>
+								</pre>
+						</li>
+						<li><span data-i18n="cat_3">caveat</span><br>
+							<div class="left">
+								<pre>
+										<code data-trim data-noescape>
+											cat /tmp/28.5.2020.json | sed 
+										</code>
+								</pre>
+							</div>
+							<div class="left">
+								<pre>
+											<code data-trim data-noescape>
+												&lt;/tmp/28.5.2020.json sed 
+											</code>
+									</pre>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section id="tee">
+					<h2>tee ┬</h2>
+					<ul>
+						<li><span data-i18n="tee_1">super useful if you would like to store some intermediate results</span>
+							<pre>
+									<code data-trim data-noescape>
+										&lt;/tmp/28.5.2020.json grep "amazon" | tee -a /tmp/amazon | sed ..
+									</code>
+								</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="more_less">
+					<h2>more / less</h2>
+					<ul>
+						<li data-i18n="more_less_1">for viewing the content that is unable to fit the screen</li>
+						<li><span data-i18n="more_less_2">MORE go simply over the file, LESS is more feature rich</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | more
+									cat /tmp/28.5.2020.json | less
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="hexdump">
+					<h2>hexdump</h2>
+					<ul>
+						<li><span data-i18n="hexdump">in order to verify binary data, or non printable chars</span>
+							<pre>
+								<code data-trim data-noescape>
+									hexdump -C 60 /tmp/28.5.2020.json | less
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section id="head"> <!-- head/tail -->
+				<section id="head_1">
+					<h2>head/tail</h2>
+					<ul>
+						<li data-i18n="head_tail_1">simply takes the beggining or end of the file</li>
+						<li data-i18n="head_tail_2">by default takes 10 lines</li>
+						<pre>
+							<code data-trim data-noescape>
+								head /tmp/28.5.2020.json 
+							</code>
+						</pre>
+				</section>
+				<section id="head_2">
+					<ul>
+						<li><span data-i18n="head_tail_2">if you would like to take different number of lines</span>
+							<pre>
+									<code data-trim data-noescape>
+										head -n 1 /tmp/28.5.2020.json 
+									</code>
+								</pre>
+						</li>
+						<li><span data-i18n="head_tail_3">if you have way too long lines, take charactes/bytes</span>
+							<pre>
+									<code data-trim data-noescape>
+										head -c 50 /tmp/28.5.2020.json 
+									</code>
+								</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="head_3">
+					<ul>
+						<li><span data-i18n="head_tail_4">tail works as expected</span>
+							<pre>
+									<code data-trim data-noescape>
+										tail -n 1 /tmp/28.5.2020.json 
+									</code>
+								</pre>
+						</li>
+						<li><span data-i18n="head_tail_5">nice feature! take after some lines<br> for instance to skip header</span>
+							<pre>
+									<code data-trim data-noescape>
+										tail -n+2 /tmp/28.5.2020.json 
+									</code>
+								</pre>
+						</li>
+						<li><span data-i18n="head_tail_6">or take a look at a problematic part of file</span>
+							<pre>
+									<code data-trim data-noescape>
+										tail -n+22 /tmp/28.5.2020.json | head -n 5 
+									</code>
+								</pre>
+						</li>
+					</ul>
+				</section>
+			</section>			
+			<section id="cut"> <!-- cut -->
+				<h2>cut</h2>
+				<ul>
+					<li><span data-i18n="cut_1">can take 'column'</span>
+						<pre>
+							<code data-trim data-noescape>
+								cut -f1 /tmp/category.tsv
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="cut_2">can specify range, columns</span>
+						<pre><code data-trim data-noescape>
+								cut -f1-4 /tmp/category.tsv
+								cut -f1,2 /tmp/category.tsv
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="cut_3">change the delimiter</span>
+						<pre>
+							<code data-trim data-noescape>
+								cut -f1 -d, /tmp/28.5.2020.json
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</section>
+			<section id="history"> <!-- history -->
+				<section id="history_1">
+					<h2>history</h2>
+					<ul>
+						<li><span data-i18n="history_1">bash is kind enough to remember the past commands for you</span>
+							<pre>
+								<code data-trim data-noescape>
+									history				
+								</code>
+							</pre>
+						</li>
+						<li data-i18n="history_2">
+							with CTRL + R/ CTRL + S you can search backward/forward respectively
+						</li>
+					</ul>
+				</section>
+				<section id="history_2">
+                    <span data-i18n="history_2_1">No history bash</span>
+					<pre>
+						<code data-trim data-noescape>
+								bash --init-file <(echo '. ~/.bashrc; unset HISTFILE')
+						</code>
+					</pre>
+				</section>
+			</section>
+			<section id="tr-grep-sed"> <!-- tr & grep & sed -->
+				<section id="tr_grep_sed_1">
+					<h3>tr</h3>
+					<ul>
+						<li><span data-i18n="tr_1">edit on character level</span>
+							<pre><code data-trim data-noescape>
+									tr "," "\t"
+								</code></pre>	
+						</li>
+						<li><span data-i18n="tr_2">delete</span>
+							<pre><code data-trim data-noescape>
+									tr -d "\r"
+								</code></pre>	
+						</li>
+						<li><span data-i18n="tr_3">globbing patterns</span>
+							<pre><code data-trim data-noescape>
+									tr '[:upper:]' '[:lower:]'
+								</code></pre>	
+						</li>
+						<li><span data-i18n="tr_4">cleaning</span>
+							<pre><code data-trim data-noescape>
+									tr -s ' '
+								</code></pre>	
+						</li>
+					</ul>					
+				</section>
+				<section id="tr_grep_sed_2"> <!-- grep -->
+					<h2>grep</h2>
+					<ul>
+						<li><span data-i18n="grep_1">matching interesting lines</span>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | grep microsoft
+								</code>
+							</pre>	
+						</li>
+						<li><span data-i18n="grep_2">regexp support</span>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | grep -e 'cnt":[0-9]}'
+								</code>
+							</pre>	
+						</li>
+					</ul>					
+				</section>
+				<section id="tr_grep_sed_3"> <!-- grep II -->
+					<h2>grep II</h2>
+					<ul>
+						<li><span data-i18n="grep_4">with line numbers</span>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | grep -n microsoft
+								</code>
+							</pre>	
+						</li>
+						<li><span data-i18n="grep_5">inverse selection</span>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | grep -v microsoft
+								</code>
+							</pre>	
+						</li>
+						<li><span data-i18n="grep_6">output just the matched part</span>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | grep -o -e 'cnt":[0-9]}'
+								</code>
+							</pre>	
+						</li>
+					</ul>					
+				</section>
+				<section id="tr_grep_sed_4">
+					<h2>sed</h2>
+					<ul>
+						<li><span data-i18n="sed_1">even more powerful stream editing tool</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | sed 's#cnt#count#gm'
+								</code>
+							</pre>	
+						</li>
+						<li><span data-i18n="sed_2">inplace editing, dangerous zone</span>
+							<pre>
+								<code data-trim data-noescape>
+									sed -i 's#cnt#count#gm' /tmp/28.5.2020.json
+								</code>
+							</pre>	
+						</li>
+					</ul>					
+				</section>
+				<section id="tr_grep_sed_5">
+					<h2>sed II</h2>
+					<ul>
+						<li><span data-i18n="sed_3">hairy regexes = true power</span>
+							<pre>
+								<code data-trim data-noescape>
+									sed 's#[^    ]##gm'
+								</code>
+							</pre>	
+						</li>
+						<li><span data-i18n="sed_4">more complicated example, several attempts were needed</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | \
+									sed 's#\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\)#\3/\2/\1#gm'
+								</code>
+							</pre>
+						</li>
+                    </ul>
+                </section>
+                <section id="tr_grep_sed_6">
+                    <h2>sed III</h2>
+                    <ul>
+                        <li><span data-i18n="sed_5">matching cross the endline</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | \
+									sed -z 's#\n#\t#gm'
+								</code>
+							</pre>
+						</li>
+                        <li><span data-i18n="sed_6">command chaining</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | \
+									sed -z 's#\n#\t#gm;s#\s\+# #gm'
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section id="sort"> <!-- sort -->
+				<section id="sort_1">
+					<h2>sort</h2>
+					<ul>
+						<li><span data-i18n="sort_1">sort inputs</span>
+							<pre>
+								<code data-trim data-noescape>
+									sort /tmp/28.5.2020.json
+								</code>
+							</pre>
+						</li>
+						<li data-i18n="sort_2">
+							supports parallel execution in newer versions
+						</li>						
+					</ul>
+				</section>
+				<section id="sort_2">
+					<h2 data-i18n="sort_4">useful examples</h2>
+					<ul>
+						<li><pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | cut -f1,2 -d, | sort -k1b,1							
+								</code></pre>
+						</li>
+						<li>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | awk -F'[:,}]' '{print $2"\t"$8}' | \
+									sort -n -k2,2
+								</code>
+							</pre>
+						</li>
+						<li>
+							<pre><code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | awk -F'[:,}]' '{print $2"\t"$8}' | \
+									sort -r -k1,1
+								</code>
+							</pre>
+						</li>
+                        <li><pre>
+                               <code data-trim data-noescape>
+                                   cat /tmp/28.5.2020.json | sort -S60G
+                               </code>
+                           </pre>
+                       </li>
+					</ul>
+				</section>
+				<section id="sort_3">
+					<h2 data-i18n="sort_5">flags vs programs</h2>
+						<ul>
+							<li data-i18n="sort_6">uniq entries</li>
+								<pre>
+									<code data-trim data-noescape>
+										cat /tmp/28.5.2020.json | cut -f1 -d, | sort -u 
+										cat /tmp/28.5.2020.json | cut -f1 -d, | sort | uniq -c 
+									</code>
+								</pre>								
+							<li data-i18n="sort_7">random groups together/all </li>
+								<pre>
+									<code data-trim data-noescape>
+										cat /tmp/28.5.2020.json | cut -f1 -d, | sort -uR 
+										cat /tmp/28.5.2020.json | cut -f1 -d, | shuf
+									</code>
+								</pre>
+						</ul>
+				</section>
+			</section>
+			<section id="awk"> <!-- awk -->
+				<section id="awk_1">
+					<h2>awk</h2>
+					<ul>
+						<li><span data-i18n="awk_1">most basic usage, select columns, whitespace delimited</span>
+							<pre>
+								<code data-trim data-noescape>
+									awk '{print $1}'
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="awk_2">useful special variables</span>
+							<pre>
+								<code data-trim data-noescape>
+									echo -e "a b\nc d" |\
+									awk '{print NR,NF}'
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="awk_2">
+					<h2>awk II</h2>
+					<ul>
+						<li><span data-i18n="awk_3">specify delimiters</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | awk -F '[,:]' '{print $2,$8}'
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="awk_4">conditions</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/category.tsv | \
+									awk '{if ($2 == "amazon"){print $0}}'
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="awk_3">
+					<h2>awk III</h2>
+					<ul>
+						<li><span data-i18n="awk_5">env variables</span>
+							<pre>
+								<code data-trim data-noescape>
+									var=5; cat /tmp/28.5.2020.json | \
+									awk -v val=$var '{print val"\t"$1}'
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="awk_6">sub in input</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/category.tsv | \
+									awk -F '[\t]' '{gsub("[[:space:]]","_", $2);print $2}'
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+				<section id="awk_4">
+					<h2>awk IV</h2>
+					<ul>
+						<li><span data-i18n="awk_7">operations (arrays)</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/category.tsv | \
+									awk \
+									'BEGIN {
+										FS="[^a-zA-Z]+"
+									}
+									{
+										for (i=1; i<=NF; i++)
+											words[tolower($i)]++
+									}
+									END {
+										for (i in words)
+											print i, words[i]
+									}'
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+			</section>	
+			<section id=xargs> <!-- xargs -->
+				<h2>xargs</h2>
+				<ul>
+					<li><span data-i18n="xargs_1"> build and run command from stdin</span>
+						<pre><code data-trim data-noescape>
+								ls -1 /tmp | xargs wc -l
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="xargs_2">you can do some more complicated stuff</span>
+						<pre><code data-trim data-noescape>
+								kubectl -n tlab-dod-prod get jobs | \ 
+								grep "angler-whiteset-feeder" | \
+								awk '{print $1}' | \
+								xargs -I {} kubectl delete job {}
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="xargs_3">enable multiprocessing</span>
+						<pre><code data-trim data-noescape>
+								echo 8.4/2 | xargs -P 8 wc -l
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</section>			
+			<section id="paste"> <!-- paste -->
+				<h2>paste</h2>
+				<ul>
+					<li><span data-i18n="paste_1">merge the lines of input files</span>
+						<pre>
+							<code data-trim data-noescape>
+								paste \ 
+								<(seq 1 $(wc -l /tmp/28.5.2020.json|awk '{print $1}')) \
+								/tmp/28.5.2020.json
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="paste_2">merge the lines of file together</span>
+						<pre>
+							<code data-trim data-noescape>
+								factorial (){
+									seq 1 $1 | paste -s -d'*' | bc 
+								}
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</section>
+			<section id="split"> <!-- split -->
+				<h2>split</h2>
+				<ul>
+					<li><span data-i18n="split_1">split into chunks</span>
+						<pre>
+							<code data-trim data-noescape>
+								split -n 2 /tmp/28.5.2020.json
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="split_2">split by number of lines</span>
+						<pre>
+							<code data-trim data-noescape>
+								split -l 2 /tmp/28.5.2020.json
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="split_3">named prefix</span>
+						<pre>
+							<code data-trim data-noescape>
+								split -l 2 /tmp/28.5.2020.json target_batches
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</section>				
+			<section id="join"> <!-- join -->
+				<h2>join</h2>
+				<ul>
+					<li><span data-i18n="join_1">Join two sorted files together</span>
+						<pre><code data-trim data-noescape>
+							  join -11 -22 \
+							  <(cat /tmp/28.5.2020.json | \
+							  jq -r ".[]|[.target, .cnt]|@tsv" | sort -k1) \
+							  <(cat /tmp/category.tsv | sort -k2b,2)
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="join_2">put missing entries into output</span>
+						<pre><code data-trim data-noescape>
+								join -j1 -a2
+							</code>
+						</pre>
+					</li>
+					<li><span data-i18n="join_3">override default delimiter</span>
+						<pre><code data-trim data-noescape>
+								join -j1 -t ' ' 
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</section>
+			<section id="parallel"> <!-- parallel -->
+				<section id="parallel_1">
+				<h2>parallel</h2>
+					<ul>
+						<li><span data-i18n="parallel_1">parallel processing, xargs done right</span>
+							<pre>
+								<code data-trim data-noescape data-i18n="parallel_1_1">
+									parallel your_command
+								</code>
+							</pre>						
+						</li>
+						<li><span data-i18n="parallel_2">nesting</span>
+							<pre>
+								<code data-trim data-noescape>
+									parallel "echo {1} {2}" ::: $(seq 1 2) ::: $(seq 9 -1 6)
+								</code>
+							</pre>						
+						</li>
+					</ul>
+				</section>
+				<section id="parallel_2">
+					<h2>parallel II</h2>
+						<ul>
+							<li><span data-i18n="parallel_3">multiple columns on input</span>
+								<pre>
+									<code data-trim data-noescape>
+										echo -e "a,b\nc,d" | parallel --colsep ',' echo {1} {2} 
+									</code>
+								</pre>						
+							</li>
+							<li><span data-i18n="parallel_4">argument processing</span>
+								<pre>
+									<code data-trim data-noescape>
+										find /tmp -name "*.json" | \
+										parallel -j 8 echo {.} {/} {/.} {#} {%} 
+									</code>
+								</pre>						
+							</li>
+						</ul>
+				</section>				
+			</section>
+			<section id='jq'><!-- jq -->
+				<section id="jq_1">
+					<h2>jq</h2>
+					<ul>
+						<li><span data-i18n="jq_1">command line processing tool for JSON data</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq -r "."
+								</code>
+							</pre>
+						</li>
+					</ul>					
+				</section>
+				<section id="jq_2">
+					<h2 data-i18n="jq_2">useful params</h2>
+					<ul>
+						<li><span data-i18n="jq_3">load whole file</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq --slurp "."
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="jq_4">unwind array</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq -r ".[]"
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="jq_5">piping, next level</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq -r ".[]|.target"
+								</code>
+							</pre>
+						</li>
+					</ul>					
+				</section>
+				<section id='jq_3'>
+					<h2 data-i18n="jq_6">useful params</h2>
+					<ul>
+						<li><span data-i18n="jq_7">arrays</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq ".[]|[.target, .cnt]"
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="jq_8">dicts</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq ".[]|{t: .target, c: .cnt}"
+								</code>
+							</pre>
+						</li>
+						<li><span data-i18n="jq_9">format output</span>
+							<pre>
+								<code data-trim data-noescape>
+									cat /tmp/28.5.2020.json | jq ".[]|[.target, .cnt]|@tsv"
+								</code>
+							</pre>
+						</li>
+					</ul>					
+				</section>
+			</section>
+            <section id="misc">
+                <section id="seq"> <!-- seq -->
+                    <h2>seq</h2>
+                    <ul>
+                        <li><span data-i18n="seq_1">can generate sequencese</span>
+                                <pre>
+                                        <code data-trim data-noescape>
+                                                seq 1 10
+                                        </code>
+                                </pre>
+                        </li>
+                        <li><span data-i18n="seq_2">middle param is cool</span>
+                                <pre>
+                                        <code data-trim data-noescape>
+                                                seq 999 -1 997
+                                        </code>
+                                </pre>
+                        </li>
+                    </ul>
+                </section>
+                <section id="printf"> <!-- printf -->
+                        <h2>printf</h2>
+                        <ul>
+                            <li data-i18n="printf_1">print formatted data<br>(similar to C/C++/Python syntax)</li>
+                        </ul>
+                        <pre>
+                                <code data-trim data-noescape>
+                                        printf "%s\t%s-%02d\t%02d\t%.02f\n" omojboze macka 69 420 4.6568
+                                </code>
+                        </pre>
+                </section>
+                <section id=bc> <!-- bc -->
+                    <h2>bc</h2>
+                    <ul>
+                        <li><span data-i18n="bc_1">command line calculator</span>
+                            <pre>
+                                <code data-trim data-noescape data-i18n="bc_1_1">
+                                    bc (opens prompt)
+                                </code>
+                            </pre>
+                        </li>
+                        <li><span data-i18n="bc_2">you can pipe</span>
+                            <pre>
+                                <code data-trim data-noescape>
+                                    echo 8.4/2 | bc
+                                </code>
+                            </pre>
+                        </li>
+                        <li><span data-i18n="bc_3">or enable floating point arithmetics</span>
+                            <pre>
+                                <code data-trim data-noescape>
+                                    echo 8.4/2 | bc -l
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+			<!-- Slide 3 - Stupid count-->
+			<section id="examples">
+				<section id="examples_1">
+					<h3 data-i18n="ex_1">Examples</h3>
+					<ul>
+						<li><span data-i18n="ex_1_1">Get the sum of all 'cnt' from our file</span>
+							 /tmp/28.5.2020.json
+						</li>
+					</ul>
+				</section>
+				<section id="examples_2">					
+					<ul>
+						<li data-i18n="ex_2">Stupid count</li>
+					</ul>
+					<pre>
+							<code data-trim data-noescape>
+							cat /tmp/28.5.2020.json | jq -r ".[]|.cnt" | \
+							paste -s -d+ | bc -l
+							</code>
+						</pre>
+				</section>
+				<section id="examples_3">
+					<pre>
+							<code data-trim data-noescape>
+							cat /tmp/28.5.2020.json | jq -r ".[]|.cnt"
+							</code>
+						</pre>
+					<pre>
+							<code data-trim data-noescape>
+								35
+								8
+								8
+								7
+								5
+								2
+								2
+								2
+								2
+								2
+								...
+							</code>
+						</pre>
+				</section>
+				<section id="examples_4">
+					<pre>
+							<code data-trim data-noescape>
+							cat /tmp/28.5.2020.json | jq -r ".[]|.cnt" | paste -s -d+
+							</code>
+						</pre>
+					<pre>
+							<code data-trim data-noescape>
+								35+8+8+7+5+2+2+2+2+2+...
+							</code>
+						</pre>
+				</section>
+				<section id="examples_5">
+					<pre>
+							<code data-trim data-noescape>
+							cat /tmp/28.5.2020.json | jq -r ".[]|.cnt" | \
+							paste -s -d+ | bc
+							</code>
+						</pre>
+					<pre>
+							<code data-trim data-noescape>
+							95
+							</code>
+						</pre>
+				</section>	
+			</section>
+			<!-- Slide - Not so stupid Count -->
+			<section>
+				<section id="examples_6">
+					<h3 data-i18n="ex_3">Examples</h3>
+					<ul>
+						<li data-i18n="ex_4">Get the sum of all 'source' for each target rom our file
+							 /tmp/28.5.2020.json
+						</li>
+					</ul>
+				</section>
+				<section id="examples_7">
+					<ul>
+						<li data-i18n="ex_5">Not so stupid count</li>
+					</ul>
+					<pre>
+							<code data-trim data-noescape>
+							cat /tmp/28.5.2020.json | \
+                            jq -r ".[]|[.src, .cnt]|@tsv" | \
+                            awk '{arr[$1]+=$2}END{for (a in arr) print a, arr[a]}'
+							</code>
+							<span data-i18n="ex_6">Inspired by <a href="https://stackoverflow.com/a/14916890">this</a></span>
+					</section>
+			</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/internation/internation.js"></script>
+		<style>
+			html.intro body {
+				background:url("images/1.png");
+				background-position:center;
+				background-size: 100%;
+			}
+
+			html.intro h1, p {
+				background-color: rgba(255,255,255,0.8);
+			}
+		</style>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: true,
+                internation: {
+                    locale: "en",
+                    localename: 'English',
+                    langattribute: "data-i18n",
+                    switchselector: ".langchooser",
+                    html: true,
+                    languages: {
+                        cz: {
+                            name: "Čeština",
+                            dictionary: "cz.json"
+                        }
+                    },
+                    debug: true,
+                    makejson: true
+                },
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, Internation ]
+			});
+		</script>
+	</body>
+</html>
