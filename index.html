@@ -614,7 +614,15 @@
 					</ul>
 				</section>
 				<section id="history_2">
-                    <span data-i18n="history_2_1">No history bash</span>
+                    <span data-i18n="history_2_1">No history command</span>
+					<pre>
+						<code data-trim data-noescape>
+							> some_nefarious_command
+						</code>
+					</pre>
+				</section>
+				<section id="history_3">
+                    <span data-i18n="history_3_1">No history bash</span>
 					<pre>
 						<code data-trim data-noescape>
 								bash --init-file <(echo '. ~/.bashrc; unset HISTFILE')
@@ -1241,7 +1249,7 @@
 				<section id="examples_6">
 					<h3 data-i18n="ex_3">Examples</h3>
 					<ul>
-						<li data-i18n="ex_4">Get the sum of all 'source' for each target rom our file
+						<li data-i18n="ex_4">Get the sum of all 'source' for each target from our file
 							 /tmp/28.5.2020.json
 						</li>
 					</ul>
@@ -1253,8 +1261,8 @@
 					<pre>
 							<code data-trim data-noescape>
 							cat /tmp/28.5.2020.json | \
-                            jq -r ".[]|[.src, .cnt]|@tsv" | \
-                            awk '{arr[$1]+=$2}END{for (a in arr) print a, arr[a]}'
+            jq -r ".[]|[.src, .cnt]|@tsv" | \
+            awk '{arr[$1]+=$2}END{for (a in arr) print a, arr[a]}'
 							</code>
 							<span data-i18n="ex_6">Inspired by <a href="https://stackoverflow.com/a/14916890">this</a></span>
 					</section>
